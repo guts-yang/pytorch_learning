@@ -25,14 +25,17 @@ import numpy as np
 def dm01():
     np_data = np.array([[1, 2, 3], [4, 5, 6]], dtype=np.float32)
     t1 = torch.from_numpy(np_data)
+    # t1和np_data共享内存空间
     print("np_data:", np_data)
     print("t1:", t1)
     print("-" * 50)
     np_data[0, 0] = 100
+    # 验证共享内存，修改 np_data 会同步到 t1
     print("np_data:", np_data)
     print("t1:", t1)
     print("-" * 50)
     t1[1, 2] = 200
+    # 验证共享内存，修改 t1 会同步到 np_data
     print("np_data:", np_data)
     print("t1:", t1)
     print("=" * 50)

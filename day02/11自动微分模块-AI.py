@@ -24,6 +24,8 @@ def dm01():
     x = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)
     y = x * 2
     z = y.sum()
+    print("z:", z)
+    # z指向的是一个标量，所以可以对z调用backward()
     print("y grad_fn:", y.grad_fn)
     print("z grad_fn:", z.grad_fn)
     z.backward()
