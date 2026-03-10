@@ -20,20 +20,20 @@
 import torch
 
 
-def dm01():
-    a = torch.tensor([[1, 2], [3, 4]])
-    b = torch.tensor([[5, 6], [7, 8]])
-    print("cat dim0:", torch.cat([a, b], dim=0))
-    print("cat dim1:", torch.cat([a, b], dim=1))
+def dm01():                                         #  行 列
+    a = torch.tensor([[1, 2], [3, 4]])              # （2，2）
+    b = torch.tensor([[5, 6], [7, 8]])              # （2，2）
+    print("cat dim0:", torch.cat([a, b], dim=0))    # （4，2）
+    print("cat dim1:", torch.cat([a, b], dim=1))    # （2，4）
     print("=" * 50)
 
 
 def dm02():
-    v1 = torch.tensor([1, 2, 3])
-    v2 = torch.tensor([4, 5, 6])
-    v3 = torch.tensor([7, 8, 9])
-    print("stack dim0:", torch.stack([v1, v2, v3], dim=0))
-    print("stack dim1:", torch.stack([v1, v2, v3], dim=1))
+    v1 = torch.tensor([[1, 2, 3],[4, 5, 6]])                # （2，3）
+    v2 = torch.tensor([[7, 8, 9],[10, 11, 12]])             # （2，3）
+    v3 = torch.tensor([[13, 14, 15],[16, 17, 18]])          # （2，3）
+    print("stack dim0:", torch.stack([v1, v2, v3], dim=0))  # （3，2，3）
+    print("stack dim1:", torch.stack([v1, v2, v3], dim=1))  # （2，3，3）
 
 
 if __name__ == "__main__":

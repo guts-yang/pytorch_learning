@@ -11,7 +11,9 @@
     Tensor.reshape(), Tensor.is_contiguous(), Tensor.view()
 
 需要掌握的函数：
-    reshape()
+    reshape()：根据指定形状返回张量，尽量返回视图，否则返回拷贝
+    is_contiguous()：判断张量内存是否连续，返回布尔值
+    view()：只能在内存连续的情况下返回视图，否则会抛出错误
 
 练习题：
     1. 对连续张量进行 reshape 并验证共享存储
@@ -21,18 +23,21 @@ import torch
 
 
 def dm01():
-    x = torch.arange(12).reshape(3, 4)
+    x = torch.arange(12).reshape(3, 4) # 线性张量，内存连续
     y = x.reshape(2, 6)
+    z = x.reshape(1, 12)
     print("x:", x)
     print("y:", y)
+    print("z:", z)
     print("x is_contiguous:", x.is_contiguous())
     print("y is_contiguous:", y.is_contiguous())
+    print("z is_contiguous:", z.is_contiguous())
     print("=" * 50)
 
 
 def dm02():
     a = torch.arange(12).reshape(3, 4)
-    b = a.transpose(0, 1)
+    b = a.transpose(0, 1) # 转置后内存不连续
     c = b.reshape(2, 6)
     print("b:", b)
     print("b is_contiguous:", b.is_contiguous())
