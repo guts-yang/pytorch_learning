@@ -5,7 +5,7 @@ from langchain_openai import ChatOpenAI
 # 1. 定义模型 (Model)
 llm = ChatOpenAI(
     model="deepseek-chat",
-    openai_api_key="sk-9a5b614d3e224da098180d6fcf1aa4c4", 
+    openai_api_key="xxx", 
     openai_api_base="https://api.deepseek.com"
 )
 
